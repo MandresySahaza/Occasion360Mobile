@@ -1,0 +1,83 @@
+.login-header{
+    --background: black;
+    border-left: 7px solid white;
+
+    ion-toolbar {
+        --background: black;
+        color: rgb(205, 200, 200);
+    }
+
+    ion-title {
+        color: rgb(205, 200, 200);
+        text-align: center;
+        align-items: center;
+    }
+
+    .retour {
+        color: white;
+    }
+}
+
+.login-content {
+    --background: black;
+    border-left: 7px solid #fff;
+
+    .logo{
+        color: #fff;
+        text-align: center;
+        margin-top: 50px;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .form{
+        padding: 0 12vw;
+        margin-top: 50px;
+        ion-input{
+            --padding-start: 33px;
+            --height: 55px;
+            border: 2px solid white;
+            border-radius: var(--border-radius);
+            --border-radius: 25px;
+            margin-bottom: 22px;
+            --placeholder-color:  rgb(205, 200, 200)e;
+            --color: rgb(205, 200, 200);
+            
+        }
+    }
+    .login-button{
+        width: 50vw;
+        background-color: #fff;
+        margin-top: 50px;
+        padding: 20px;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: 500;
+        justify-content: flex-end;
+        ion-icon{
+            margin-left: 30px;
+        }
+    }
+
+    .login-footer{
+        color:  rgb(205, 200, 200);
+        padding: 0 12vw;
+        margin-top: 100px;
+        text-align: center;
+
+        h3{
+            a{
+            font-size: 1rem;
+            font-weight: 400;
+            color:  rgb(205, 200, 200);
+            }
+            span{
+                font-size: 1rem;
+                color: white;;
+                font-weight: 500;
+                }
+        }
+    }
+}

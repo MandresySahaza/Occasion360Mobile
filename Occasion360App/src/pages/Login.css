@@ -44,6 +44,11 @@
             
         }
     }
+
+    .error-Toast{
+        --color: red;
+        text-align: center;
+    }
     .login-button{
         width: 50vw;
         background-color: #fff;

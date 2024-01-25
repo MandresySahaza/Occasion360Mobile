@@ -25,6 +25,7 @@ import './theme/variables.css';
 import Acceuil from './pages/Acceuil';
 import Login from './pages/Login';
 import Inscription from './pages/Inscription';
+import Page from './pages/Page';
 
 setupIonicReact();
 
@@ -32,6 +33,9 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
+        <Route exact path="/page">
+          <Page />
+        </Route>
         <Route exact path="/acceuil">
           <Acceuil />
         </Route>
@@ -50,3 +54,37 @@ const App: React.FC = () => (
 );
 
 export default App;
+
+
+ //https://test-springboot-production.up.railway.app/utilisateurs/register
+    // {
+    //     "code": 0,
+    //     "message": "OK",
+    //     "result": {
+    //         "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTcwNjIwNzMzNywiZXhwIjoxNzA2MjkzNzM3fQ.EJCFmh_gkgPa_5yLgEXwRHMeCoP3rNziS7vg-hROdr4",
+    //         "utilisateur": {
+    //             "id": 1,
+    //             "nom": "RAZA",
+    //             "prenom": "Mandresy",
+    //             "datenaissance": "2000-01-01",
+    //             "dateinscription": "2024-01-25",
+    //             "mail": "test@gmail.com",
+    //             "contact": "0345597126",
+    //             "adresse": "Everywhere",
+    //             "cin": "101211547963",
+    //             "role": "USER",
+    //             "enabled": true,
+    //             "authorities": [
+    //                 {
+    //                     "authority": "ROLE_USER"
+    //                 }
+    //             ],
+    //             "username": "test@gmail.com",
+    //             "accountNonExpired": true,
+    //             "accountNonLocked": true,
+    //             "credentialsNonExpired": true
+    //         }
+    //     },
+    //     "time": 1706207337163
+    // }
+

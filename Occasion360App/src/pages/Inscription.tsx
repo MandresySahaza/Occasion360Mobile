@@ -75,7 +75,7 @@ const Inscription: React.FC = () => {
                 const result = await response.json();
                 if (result && result.result && result.result.token) {
                     localStorage.setItem('token', result.result.token);
-                    history.push('/page');
+                    history.push('/profil');
                 } else {
                 console.error('Échec de la creation  de l\'utilisateur');
                 setErrorToast('Échec de la creation de l\'utilisateur');
@@ -83,7 +83,7 @@ const Inscription: React.FC = () => {
             } else {
                 console.log("tsy makato akory");
                 console.error('Erreur lors de la requête vers l\'API');
-                setErrorToast('Erreur lors de la requête vers l\'API');
+                setErrorToast('Erreur de connexion');
             }
         } catch (error) {
           console.error('Erreur lors de la requête vers l\'API', error);

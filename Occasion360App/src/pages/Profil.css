@@ -1,0 +1,89 @@
+.profil-content {
+    --background: black;
+    border-left: 7px solid #fff;
+
+    .Titre{
+        color: #fff;
+        text-align: center;
+        margin-top: 30px;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .profile-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+
+        .profile-icon {
+          font-size: 80px;
+          color: rgb(106, 100, 100);
+    
+            ion-icon {
+                font-size: inherit;
+                border-radius: 50%;
+                background: #fff;
+                padding: 10px;
+            }
+        }
+        .user-details{
+            width: 90%;
+            background: #0a0909; /* Couleur plus sombre pour le fond */
+            padding: 10px; /* Ajustez la marge interne selon vos préférences */
+            p{
+                text-align: center;
+            }  
+            ion-item {
+                --background: #efefef; /* Couleur de fond pour chaque IonItem */
+                border-radius: 3px; /* Ajoutez une bordure arrondie à chaque IonItem */
+                margin-bottom: 5px; /* Ajoutez de l'espace entre chaque IonItem */
+            }
+        }
+    }
+
+    .socials {
+        margin-top: 18px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        ion-button{
+            margin: 0 5px;
+            --padding-start: 12px;
+            --padding-end: 12px;
+
+            ion-icon {
+                font-size: 18px;
+            }
+        }
+        .btn-fb{
+            --background: #567aa3;
+        }
+        .btn-twitter{
+            --background: #48cff5;
+        }
+        .btn-google{
+            --background: #fd684f;
+        }
+        .btn-cl{
+            --background: #737373;
+        }
+    }
+
+    .logout-btn {
+        color: #fff;
+        height: 45px;
+        width: 60%; /* Ajustez la largeur selon vos préférences */
+        margin: 20px auto; /* Centrez le bouton horizontalement et ajoutez de l'espace en haut */
+        background: linear-gradient(to right, #4b4a4a, #222); 
+        --box-shadow: none;
+        text-transform: initial;
+        font-size: 16px;
+        letter-spacing: 0;
+        font-weight: 400;
+    }
+
+
+
+    
+}

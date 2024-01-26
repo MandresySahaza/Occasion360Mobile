@@ -54,7 +54,7 @@ const Login: React.FC = () => {
         if (result && result.result && result.result.token) {
           // La vérification a réussi, stocker le token dans le localStorage
           localStorage.setItem('token', result.result.token);
-          history.push('/page');
+          history.push('/profil');
         } else {
           // La vérification a échoué, afficher un message d'erreur ou prendre d'autres mesures
           console.error('Échec de la vérification de l\'utilisateur');
@@ -65,7 +65,7 @@ const Login: React.FC = () => {
         // Gérer les erreurs de l'API
         console.error('Erreur lors de la requête vers l\'API');
         //setError('Error in API request');
-        setErrorToast('Error in API request');
+        setErrorToast('Erreur de connexion');
       }
     } catch (error) {
       console.error('Erreur lors de la requête vers l\'API', error);

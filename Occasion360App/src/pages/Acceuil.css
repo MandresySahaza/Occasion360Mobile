@@ -64,6 +64,14 @@
             font-size: 16px;
             letter-spacing: 0;
             font-weight: 400;
+            --border-color: black;
+            --color : black;
+        }
+
+        .signup-btn {
+            --background: black;
+            --border-color: black;
+            --color: white; /* Set the text color to white or any color that suits your design */
         }
 
         .line-text{

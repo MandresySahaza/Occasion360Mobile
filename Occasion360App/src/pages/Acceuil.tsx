@@ -22,9 +22,31 @@ import { logoFacebook } from 'ionicons/icons';
 import { logoTwitter } from 'ionicons/icons';
 import { logoGoogle } from 'ionicons/icons';
 import { callOutline } from 'ionicons/icons';
+import { useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode';
+import { useHistory } from 'react-router';
 
 
 const Acceuil: React.FC = () => {
+    const history = useHistory();
+    
+    useEffect(() => {
+        const checkTocken = async () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                try {
+                    const decodedtoken = jwtDecode(token);
+                    const now = Date.now() / 1000;
+                    history.push('/profil');
+                } catch (error) {
+                    localStorage.removeItem('token');
+                    history.replace('/inscription');
+                }
+            }
+        }
+        checkTocken();
+    }, []);
+
     return (
         <IonContent fullscreen className='acceuil-content'>
             <div id='header'>
@@ -43,7 +65,7 @@ const Acceuil: React.FC = () => {
                     <p>Vente et achat de voiture d'occasion</p>
 
                     <IonButton expand='block' fill="outline" routerLink='/login'>SIGN IN</IonButton>
-                    <IonButton expand='block' routerLink='/inscription'>SIGN UP</IonButton>
+                    <IonButton expand='block' routerLink='/inscription' className='signup-btn'>SIGN UP</IonButton>
 
                     <div className='line-text'>
                         <span className='lines'></span>

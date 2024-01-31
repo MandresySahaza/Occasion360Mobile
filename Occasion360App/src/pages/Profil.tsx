@@ -61,7 +61,8 @@ const Profil: React.FC = () => {
             try {
                 const token = localStorage.getItem('token');
                 console.log(token);
-                const response = await fetch('https://test-springboot-production.up.railway.app/utilisateurs/details', {
+                //const response = await fetch('https://test-springboot-production.up.railway.app/utilisateurs/details', {
+                const response = await fetch('https://api-finalclouds5-production.up.railway.app/utilisateurs/details', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -88,6 +89,7 @@ const Profil: React.FC = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         history.replace('/login');
+        window.location.reload();
     };
 
     return (

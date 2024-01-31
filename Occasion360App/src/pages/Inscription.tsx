@@ -23,6 +23,7 @@ import { useState , useEffect} from 'react';
 import { useHistory } from 'react-router-dom'; 
 
 
+
 const Inscription: React.FC = () => {
     
     const [errorToast, setErrorToast] = useState<string | null>(null);
@@ -61,9 +62,12 @@ const Inscription: React.FC = () => {
     }, [formData]);
    
 
-    const handleSignUp = async () => {
+    const handleSignUp = async (e : React.FormEvent) => {
+        e.preventDefault();
+
         try {
-            const response = await fetch('https://test-springboot-production.up.railway.app/utilisateurs/register', {
+            //const response = await fetch('https://test-springboot-production.up.railway.app/utilisateurs', {
+            const response = await fetch('https://api-finalclouds5-production.up.railway.app/utilisateurs', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -115,21 +119,24 @@ const Inscription: React.FC = () => {
                 <h1>OCCASION 360</h1>
                 </div>
                 
-                <div className='form'>
-                <IonInput type='text' placeholder="Nom" name="nom" value={formData.nom} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='text' placeholder='Prenom' name='prenom' value={formData.prenom} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='date' placeholder='Date de Naissance' name='dateNaissance' value={formData.dateNaissance} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='password' placeholder='password' name='password' value={formData.password} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='email' placeholder='Email' name='mail' value={formData.mail} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='text' placeholder='Contact' name='contact' value={formData.contact} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='text' placeholder='Adresse' name='adresse' value={formData.adresse} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='text' placeholder='numero CIN' name='cin' value={formData.cin} onIonInput={handleInputChange}></IonInput>
+                <form onSubmit={handleSignUp}   >
+                    <div className='form'>
+                        <IonInput type='text' placeholder="Nom" name="nom" value={formData.nom} onIonInput={handleInputChange} required></IonInput>
+                        <IonInput type='text' placeholder='Prenom' name='prenom' value={formData.prenom} onIonInput={handleInputChange} required></IonInput>
+                        <IonInput type='date' placeholder='Date de Naissance' name='dateNaissance' value={formData.dateNaissance} onIonInput={handleInputChange} required></IonInput>
+                        <IonInput type='password' placeholder='password' name='password' value={formData.password} onIonInput={handleInputChange} required></IonInput>
+                        <IonInput type='email' placeholder='Email' name='mail' value={formData.mail} onIonInput={handleInputChange} required></IonInput>
+                        <IonInput type='text' placeholder='Contact' name='contact' value={formData.contact} onIonInput={handleInputChange} required></IonInput>
+                        <IonInput type='text' placeholder='Adresse' name='adresse' value={formData.adresse} onIonInput={handleInputChange} required></IonInput>
+                        <IonInput type='text' placeholder='numero CIN' name='cin' value={formData.cin} onIonInput={handleInputChange} required></IonInput>
+                    </div>
                 
-                </div>
+                    <IonButton className='signin-button' expand="full" type="submit">
+                        SIGN IN <IonIcon icon={chevronForwardCircleOutline} />
+                    </IonButton>
+                </form>
 
-                <div className='inscription-button' onClick={handleSignUp}>
-                    SIGN UP <IonIcon icon={chevronForwardCircleOutline} ></IonIcon>
-                </div>
+
                 <div className='inscription-footer'>
                 <h3><a href="/login">Have an account ? <span>Sign In</span></a></h3>
                 </div>
@@ -140,3 +147,5 @@ const Inscription: React.FC = () => {
 };
 
 export default Inscription;
+
+

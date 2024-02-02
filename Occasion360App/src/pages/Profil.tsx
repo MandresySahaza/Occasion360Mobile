@@ -1,17 +1,32 @@
 import React from 'react';
-import { IonContent, IonPage, IonButton, IonIcon, IonItem, IonLabel } from '@ionic/react';
-import { person, logOut } from 'ionicons/icons';
+import { IonContent,
+    IonHeader,
+    IonPage, 
+    IonTitle,
+    IonButton,
+    IonButtons,
+    IonBackButton,
+    IonImg,
+    IonCard,
+    IonToolbar, 
+    IonCardContent,
+    IonIcon,
+    IonInput,
+    IonItem , IonToast , IonCardHeader , IonCardTitle ,
+    IonCardSubtitle ,IonList ,IonThumbnail,IonLabel
+    } from '@ionic/react';
+import { person, mail, logOut } from 'ionicons/icons';
 
 import './Profil.css';
 
-import { useState, useEffect } from 'react';
+import { useState , useEffect} from 'react';
 
 import { logoFacebook } from 'ionicons/icons';
 import { logoTwitter } from 'ionicons/icons';
 import { logoGoogle } from 'ionicons/icons';
 import { callOutline } from 'ionicons/icons';
 
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';    
 import { jwtDecode } from 'jwt-decode';
 
 const Profil: React.FC = () => {
@@ -46,6 +61,7 @@ const Profil: React.FC = () => {
             try {
                 const token = localStorage.getItem('token');
                 console.log(token);
+                //const response = await fetch('https://test-springboot-production.up.railway.app/utilisateurs/details', {
                 const response = await fetch('https://api-finalclouds5-production.up.railway.app/utilisateurs/details', {
                     method: 'GET',
                     headers: {

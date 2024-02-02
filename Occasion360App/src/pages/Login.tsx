@@ -39,9 +39,11 @@ const Login: React.FC = () => {
     //console.log(password);
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (e : React.FormEvent) => {
+    e.preventDefault();
     try {
-      const response = await fetch('https://api-finalclouds5-production.up.railway.app/utilisateurs/login', {
+      //const response = await fetch('https://test-springboot-production.up.railway.app/utilisateurs/login', {
+      const response = await fetch('https://api-finalclouds5-production.up.railway.app/utilisateurs/login', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,11 +93,6 @@ const Login: React.FC = () => {
       <div className='logo'>
         <h1>OCCASION 360</h1>
       </div>
-      
-      <div className='form'>
-        <IonInput type='email' placeholder="Email" value={mail}  onIonInput={handleMailChange}></IonInput>
-        <IonInput type='password' placeholder='password' value={password}  onIonInput={handlePasswordChange}></IonInput>
-      </div>
 
       <IonToast className='error-Toast'
         isOpen={errorToast !== null}
@@ -103,10 +100,18 @@ const Login: React.FC = () => {
         message={errorToast || ''}
         duration={5000}
       />
+      
+      <form onSubmit={handleLogin}   >
+        <div className='form'>
+          <IonInput type='email' placeholder="Email" value={mail}  onIonInput={handleMailChange} required></IonInput>
+          <IonInput type='password' placeholder='password' value={password}  onIonInput={handlePasswordChange} required></IonInput>
+        </div>
 
-      <div className='login-button'  onClick={handleLogin}>
-          LOGIN <IonIcon icon={chevronForwardCircleOutline} ></IonIcon>
-      </div>
+        <IonButton className='login-button' expand="full" type="submit">
+          LOG IN <IonIcon icon={chevronForwardCircleOutline} />
+        </IonButton>
+      </form>
+     
       
       <div className='login-footer'>
         <h3><a href="/inscription">Don't have an account ? <span>Sign Up</span></a></h3>

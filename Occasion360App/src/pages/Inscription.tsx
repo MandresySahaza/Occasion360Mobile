@@ -63,7 +63,7 @@ const Inscription: React.FC = () => {
 
     const handleSignUp = async () => {
         try {
-            const response = await fetch('https://test-springboot-production.up.railway.app/utilisateurs/register', {
+            const response = await fetch('https://api-finalclouds5-production.up.railway.app/utilisateurs', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -116,14 +116,14 @@ const Inscription: React.FC = () => {
                 </div>
                 
                 <div className='form'>
-                <IonInput type='text' placeholder="Nom" name="nom" value={formData.nom} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='text' placeholder='Prenom' name='prenom' value={formData.prenom} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='date' placeholder='Date de Naissance' name='dateNaissance' value={formData.dateNaissance} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='password' placeholder='password' name='password' value={formData.password} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='email' placeholder='Email' name='mail' value={formData.mail} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='text' placeholder='Contact' name='contact' value={formData.contact} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='text' placeholder='Adresse' name='adresse' value={formData.adresse} onIonInput={handleInputChange}></IonInput>
-                <IonInput type='text' placeholder='numero CIN' name='cin' value={formData.cin} onIonInput={handleInputChange}></IonInput>
+                <IonInput type='text' placeholder="Nom" name="nom" value={formData.nom} onIonInput={handleInputChange} required></IonInput>
+                <IonInput type='text' placeholder='Prenom' name='prenom' value={formData.prenom} onIonInput={handleInputChange} required></IonInput>
+                <IonInput type='date' placeholder='Date de Naissance' name='dateNaissance' value={formData.dateNaissance} onIonInput={handleInputChange}  required></IonInput>
+                <IonInput type='password' placeholder='password' name='password' value={formData.password} onIonInput={handleInputChange} required></IonInput>
+                <IonInput type='email' placeholder='Email' name='mail' value={formData.mail} onIonInput={handleInputChange} required></IonInput>
+                <IonInput type='text' placeholder='Contact' name='contact' value={formData.contact} onIonInput={handleInputChange} required></IonInput>
+                <IonInput type='text' placeholder='Adresse' name='adresse' value={formData.adresse} onIonInput={handleInputChange} required></IonInput>
+                <IonInput type='text' placeholder='numero CIN' name='cin' value={formData.cin} onIonInput={handleInputChange} required></IonInput>
                 
                 </div>
 

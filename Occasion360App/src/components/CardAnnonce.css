@@ -1,0 +1,16 @@
+.full-width-card {
+  width: 100%;
+  text-align: center;
+}
+
+.note{
+  height: 45%;
+  width: 30%;
+  text-align: center;
+}
+
+/* src/pages/Home.css */
+.custom-card {
+  border-radius: 15px; /* Set your desired border-radius */
+  box-shadow: 0 8px 12px rgba(1, 25, 109, 0.263); /* Set your desired box shadow */
+}

@@ -22,7 +22,7 @@ import {
 } from "@ionic/react";
 import "./CardAnnonce.css";
 import { useState } from "react";
-import { closeOutline } from "ionicons/icons";
+import { closeOutline, informationCircleOutline } from "ionicons/icons";
 import Swip from "./Swip";
 
 interface ContainerProps {
@@ -167,6 +167,7 @@ const CardAnnonce: React.FC<ContainerProps> = ({ annonce }) => {
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
+        <IonImg src="banniere.jpg" alt="logo"></IonImg>
           <IonCard>
             <IonItem color={"light"}>
               <IonLabel>Date : </IonLabel>
@@ -196,7 +197,7 @@ const CardAnnonce: React.FC<ContainerProps> = ({ annonce }) => {
           <br />
           <IonCard className="ion-padding">
             <IonCardHeader>
-              <IonCardTitle>Infos du vehicule : </IonCardTitle>
+              <IonCardTitle><IonIcon  icon={informationCircleOutline}></IonIcon> Infos du vehicule :</IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
               <IonList>

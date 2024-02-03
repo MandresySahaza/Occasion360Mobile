@@ -2,17 +2,13 @@ import {
   IonAlert,
   IonBadge,
   IonButton,
-  IonCol,
   IonContent,
-  IonGrid,
   IonHeader,
   IonImg,
   IonInput,
   IonItem,
-  IonLabel,
   IonList,
   IonPage,
-  IonRow,
   IonSelect,
   IonSelectOption,
   IonTitle,
@@ -26,9 +22,7 @@ import "./Ajouter.css";
 const Ajouter: React.FC = () => {
   const history = useHistory();
 
-  const [imagetest, setImagetest] = useState({
-    files: [],
-  });
+  const [imagetest, setImagetest] = useState<File[]>([]);
   const [marques, setMarques] = useState<any>();
   const [modeles, setModeles] = useState<any>();
   const [energies, setEnergies] = useState<any>();
@@ -36,107 +30,108 @@ const Ajouter: React.FC = () => {
   const [etatvoiture, setEtatvoiture] = useState<any>();
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const checkTocken = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        history.replace("/login");
-      } else {
-        try {
-        } catch (error) {
-          localStorage.removeItem("token");
-          history.replace("/inscription");
+  const checkTocken = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      history.replace("/login");
+    } else {
+      try {
+      } catch (error) {
+        localStorage.removeItem("token");
+        history.replace("/inscription");
+      }
+    }
+  };
+
+  const getMarques = async () => {
+    try {
+      const reponse = await fetch(
+        "https://api-finalclouds5-production.up.railway.app/marques",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      }
-    };
+      );
+      const marques = await reponse.json();
+      setMarques(marques.result);
+    } catch (error) {
+      console.error("nisy erreur : " + error.message);
+    }
+  };
 
-    const getMarques = async () => {
-      try {
-        const reponse = await fetch(
-          "https://api-finalclouds5-production.up.railway.app/marques",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const marques = await reponse.json();
-        setMarques(marques.result);
-      } catch (error) {
-        console.error("nisy erreur : " + error.message);
-      }
-    };
+  const getModeles = async () => {
+    try {
+      const reponse = await fetch(
+        "https://api-finalclouds5-production.up.railway.app/modeles",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const modeles = await reponse.json();
+      setModeles(modeles.result);
+    } catch (error) {
+      console.error("nisy erreur : " + error.message);
+    }
+  };
 
-    const getModeles = async () => {
-      try {
-        const reponse = await fetch(
-          "https://api-finalclouds5-production.up.railway.app/modeles",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const modeles = await reponse.json();
-        setModeles(modeles.result);
-      } catch (error) {
-        console.error("nisy erreur : " + error.message);
-      }
-    };
+  const getEnergies = async () => {
+    try {
+      const reponse = await fetch(
+        "https://api-finalclouds5-production.up.railway.app/energies",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const energies = await reponse.json();
+      setEnergies(energies.result);
+    } catch (error) {
+      console.error("nisy erreur : " + error.message);
+    }
+  };
+  const getBoitevitesses = async () => {
+    try {
+      const reponse = await fetch(
+        "https://api-finalclouds5-production.up.railway.app/boitevitesses",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const boites = await reponse.json();
+      setBoites(boites.result);
+    } catch (error) {
+      console.error("nisy erreur : " + error.message);
+    }
+  };
+  const getEtatvoiture = async () => {
+    try {
+      const reponse = await fetch(
+        "https://api-finalclouds5-production.up.railway.app/etatvoitures",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const etat = await reponse.json();
+      setEtatvoiture(etat.result);
+    } catch (error) {
+      console.error("nisy erreur : " + error.message);
+    }
+  };
 
-    const getEnergies = async () => {
-      try {
-        const reponse = await fetch(
-          "https://api-finalclouds5-production.up.railway.app/energies",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const energies = await reponse.json();
-        setEnergies(energies.result);
-      } catch (error) {
-        console.error("nisy erreur : " + error.message);
-      }
-    };
-    const getBoitevitesses = async () => {
-      try {
-        const reponse = await fetch(
-          "https://api-finalclouds5-production.up.railway.app/boitevitesses",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const boites = await reponse.json();
-        setBoites(boites.result);
-      } catch (error) {
-        console.error("nisy erreur : " + error.message);
-      }
-    };
-    const getEtatvoiture = async () => {
-      try {
-        const reponse = await fetch(
-          "https://api-finalclouds5-production.up.railway.app/etatvoitures",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const etat = await reponse.json();
-        setEtatvoiture(etat.result);
-      } catch (error) {
-        console.error("nisy erreur : " + error.message);
-      }
-    };
+  useEffect(() => {
     setIsLoading(true);
     checkTocken();
     getMarques();
@@ -293,7 +288,7 @@ const Ajouter: React.FC = () => {
       formtest.append("prix", formData.prix.toString());
       formtest.append("description", formData.description);
       formtest.append("voiture", JSON.stringify(formData.voiture));
-      const filesArray = Array.from(imagetest.files) as File[];
+      const filesArray = Array.from(imagetest);
       for (let i = 0; i < filesArray.length; i++) {
         formtest.append("files", filesArray[i]);
       }
@@ -509,17 +504,14 @@ const Ajouter: React.FC = () => {
                   name="files"
                   accept="image/*"
                   onChange={(e) =>
-                    setImagetest({
-                      ...imagetest,
-                      files: e.target.files,
-                    })
+                    setImagetest(Array.from(e.target.files || []))
                   }
                   multiple
                   required
                 />
                 Choose image(s)
               </label>
-              <IonBadge slot="end">{imagetest.files.length} image(s)</IonBadge>
+              <IonBadge slot="end">{imagetest.length} image(s)</IonBadge>
             </IonItem>
           </IonList>
 

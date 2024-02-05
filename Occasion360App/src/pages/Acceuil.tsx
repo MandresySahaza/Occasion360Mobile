@@ -27,13 +27,13 @@ import { useHistory } from 'react-router';
 import { jwtDecode } from 'jwt-decode';
 
 
+
 const Acceuil: React.FC = () => {
     const history = useHistory();
     useEffect(() => {
         const checkTocken = async () => {
             const token = localStorage.getItem('token');
             if (token) {
-                
                 try {
                     const decodedtoken = jwtDecode(token);
                     const now = Date.now() / 1000;
@@ -46,6 +46,7 @@ const Acceuil: React.FC = () => {
         }
         checkTocken();
     }, []);
+
     return (
         <IonContent fullscreen className='acceuil-content'>
             <div id='header'>

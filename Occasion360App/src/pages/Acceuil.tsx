@@ -23,13 +23,13 @@ import { logoTwitter } from 'ionicons/icons';
 import { logoGoogle } from 'ionicons/icons';
 import { callOutline } from 'ionicons/icons';
 import { useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
 import { useHistory } from 'react-router';
+import { jwtDecode } from 'jwt-decode';
+
 
 
 const Acceuil: React.FC = () => {
     const history = useHistory();
-    
     useEffect(() => {
         const checkTocken = async () => {
             const token = localStorage.getItem('token');

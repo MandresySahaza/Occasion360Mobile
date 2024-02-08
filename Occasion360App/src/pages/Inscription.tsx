@@ -77,12 +77,14 @@ const Inscription: React.FC = () => {
             console.log(response);
             if (response.ok) {
                 const result = await response.json();
+                console.log(result);
+                
                 if (result && result.result && result.result.token) {
                     localStorage.setItem('token', result.result.token);
                     history.push('/profil');
                 } else {
                 console.error('Échec de la creation  de l\'utilisateur');
-                setErrorToast('Échec de la creation de l\'utilisateur');
+                setErrorToast(result.message);
                 }
             } else {
                 console.log("tsy makato akory");
